@@ -1,0 +1,68 @@
+
+Date
+Description                                 Amount
+2016-03-13 16:35:54Ticket: annual account-20.00
+2016-03-13 16:35:57Bike 83270 until 16:53:10 (City Hall) 
+2016-03-14 09:31:45MP Manual posting: Common credit to account (25049326)+20.00
+2016-03-17 12:14:04Bike 83349 until 12:23:15 (Corporation Square - Dunbar Link / Gordon Street)
+2016-03-17 13:16:32Bike 83310 until 13:19:22 (Cotton Court / Waring Street - North Street / Waring Street)
+2016-03-17 14:45:14Bike 83016 until 14:57:45 (Cotton Court / Waring Street - Corporation Square)
+2016-03-28 14:18:41Bike 83285 until 14:31:59 (Corporation Square - City Hall)
+2016-03-28 18:30:47Bike 83225 until 18:35:46 (Cotton Court / Waring Street - Corporation Square)
+2016-04-05 18:40:42Bike 83045 until 18:41:35 (Great Victoria Street / Hope Street)
+2016-04-05 18:42:18Bike 83029 until 18:58:32 (Great Victoria Street / Hope Street - Corporation Square)
+2016-04-25 09:21:20MP Manual posting: Common debit from account (26603971)-20.00
+2016-04-27 09:15:48Payment receipt (5018104055)+20.00
+2016-04-27 13:14:55Bike 83152 until 13:25:11 (Botanic Avenue / Shaftesbury Square - Gasworks (Lagan Towpath))
+2016-04-27 13:42:13Bike 83346 until 13:48:57 (Botanic Avenue / Shaftesbury Square - Queens University / University Road )
+2016-05-01 11:33:47Bike 83065 until 11:59:19 (Arthur Street / Chichester Street - City Hall)
+2016-05-01 11:59:28Bike 83230 until 12:18:59 (City Hall - Alfred Street / St Malachy's Church)
+2016-05-01 12:19:10Bike 83072 until 12:30:56 (Alfred Street / St Malachy's Church - Arthur Street / Chichester Street)
+2016-05-01 16:03:30Bike 83137 until 16:10:22 (Cotton Court / Waring Street - Alfred Street / St Malachy's Church)
+2016-05-22 11:44:29Bike 83115 until 11:55:07 (Alfred Street / St Malachy's Church - City Hall)
+2016-05-22 12:09:55Bike 83115 until 12:34:03 (City Hall - Alfred Street / St Malachy's Church)
+2016-05-22 12:34:21Bike 83186 until 12:35:05 (Alfred Street / St Malachy's Church)
+2016-05-22 12:36:02Bike 83182 until 12:57:46 (Alfred Street / St Malachy's Church - City Hall)
+2016-05-22 13:32:29Bike 83401 until 13:46:27 (Castle Place / Royal Avenue - City Hall)
+2016-05-22 15:20:29Bike 83401 until 15:31:44 (City Hall)
+2016-05-22 15:43:37Bike 83401 until 15:55:51 (City Hall - Alfred Street / St Malachy's Church)
+2016-05-29 13:55:05Bike 83056 until 13:57:38 (Titanic Belfast Met)
+2016-05-29 14:22:13Bike 83056 until 14:42:36 (Titanic Belfast Met)
+2016-07-02 13:35:32Bike 83444 until 13:40:46 (Donegall Quay - Castle Place / Royal Avenue)
+2016-07-02 14:27:26Bike 83260 until 14:43:06 (Cathedral Gardens / York Street - Donegall Quay)
+2016-07-09 12:14:58Bike 83098 until 12:46:36 (Corporation Square - Royal Avenue / Castlecourt)-0.50
+2016-07-09 12:48:29Bike 83350 until 12:59:02 (Royal Avenue / Castlecourt - Corporation Square)
+2016-07-30 14:19:11Bike 83440 until 14:45:17 (North Street / Waring Street - Arthur Street / Chichester Street)
+2016-07-30 14:45:29Bike 83119 until 15:14:27 (Arthur Street / Chichester Street - Victoria Square / Victoria Street)
+2016-07-30 15:14:32Bike 83329 until 15:21:57 (Victoria Square / Victoria Street - North Street / Waring Street) EUR 0.00
+2016-08-18 18:54:19Bike 83115 until 19:16:05 (Donegall Quay - Titanic Belfast Met)-0.50
+2016-08-18 18:55:00Bike 83044 until 18:56:33 (Donegall Quay) - Invalid (No charge)
+2016-08-18 18:56:48Bike 83106 until 19:15:40 (Donegall Quay - Titanic Belfast Met)
+2016-08-18 23:08:16Bike 83106 until 23:23:52 (Titanic Belfast Met - Cotton Court / Waring Street)
+2016-08-18 23:08:42Bike 83432 until 23:25:48 (Titanic Belfast Met - Cotton Court / Waring Street)-0.50
+2016-08-22 18:51:02Bike 83374 until 18:54:07 (Carrick Hill/St Patricks Church)
+2016-08-22 18:54:25Bike 83183 until 18:56:00 (Carrick Hill/St Patricks Church)
+2016-08-28 07:24:21Bike 83347 until 07:25:00 (Carrick Hill/St Patricks Church)
+2016-08-28 07:25:40Bike 83261 until 07:26:37 (Carrick Hill/St Patricks Church)
+2016-08-28 07:29:17Bike 83320 until 18:40:06 (Carrick Hill/St Patricks Church - Royal Victoria Hospital)-33.50
+2016-08-29 13:58:15Payment receipt (1016963795)+35.00
+2016-10-08 13:46:13Bike 83144 until 14:04:15 (Bradbury Place - Castle Place / Royal Avenue)
+2016-10-08 14:05:07Bike 83436 until 14:31:56 (Castle Place / Royal Avenue - Queens University / University Road )
+2016-10-08 14:33:57Bike 83436 until 14:34:27 (Queens University / University Road )
+2016-10-16 15:18:55Bike 83294 until 15:23:29 (Corporation Square - Victoria Square / Victoria Street)
+2016-10-16 17:47:33Bike 83004 until 17:56:25 (Arthur Street / Chichester Street - Corporation Square)
+2016-11-12 14:46:36Bike 83002 until 15:10:45 (Gasworks (Cromac Street) - Botanic Avenue / Shaftesbury Square)
+2016-11-12 15:12:25Bike 83218 until 15:33:46 (Botanic Avenue / Shaftesbury Square - Castle Place / Royal Avenue)
+2016-11-12 17:21:51Bike 82938 until 17:28:48 (City Hall - Gasworks (Cromac Street))
+2016-11-13 12:43:50Bike 83392 until 12:54:12 (Cotton Court / Waring Street - Royal Avenue / Castlecourt)
+2016-11-13 13:35:18Bike 83161 until 13:40:28 (Royal Avenue / Castlecourt - Cotton Court / Waring Street)
+2016-11-19 16:16:28Bike 83069 until 16:25:29 (Corporation Square - Victoria Square / Victoria Street)
+2016-11-19 16:35:00Bike 83338 until 16:41:46 (Victoria Square / Victoria Street - Royal Avenue / Castlecourt)
+2016-11-19 17:53:09Bike 83436 until 17:59:10 (Victoria Square / Victoria Street - Corporation Square)
+2016-11-25 06:12:54Bike 83030 until 06:15:40 (Millfield / Divis Street) - Invalid (No charge)
+2016-11-25 06:13:47Bike 83038 until 06:21:11 (Antrim Road / Duncairn Centre - College Square East)-0.50
+2016-11-26 22:26:42Payment receipt (1018529345)+0.50
+2016-11-27 22:28:57Bike 83058 until 22:36:22 (Cathedral Gardens / York Street - Antrim Road / Duncairn Centre)
+2016-11-28 12:18:23Bike 83447 until 12:24:29 (Corporation Square - Central Station / Mays Meadow)
+2016-11-28 21:16:29Bike 83051 until 21:25:11 (Central Station / Mays Meadow - Corporation Square)
+Current balance:  GBP+0.00

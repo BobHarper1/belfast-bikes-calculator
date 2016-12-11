@@ -1,0 +1,20 @@
+#output {
+  margin-top: 10px;
+}
+
+.panel {
+    transition: 0.5s;
+    -moz-transition: 0.5s; /* Firefox 4 */
+    -webkit-transition: 0.5s; /* Safari and Chrome */
+    -o-transition: 0.5s; /* Opera */
+    -ms-transition: 0.5s; /* IE9 (maybe) */
+}
+
+.panel:hover {
+  border-color: #337ab7;
+}
+
+.twitter-share-button {
+  text-align: right;
+  float: right;
+}

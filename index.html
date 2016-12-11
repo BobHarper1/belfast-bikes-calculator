@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <link rel="canonical" href="/">
+    <link rel="me" href="https://twitter.com/odibelfast">
+
+    <!-- Latest compiled and minified Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- our own inherit masker for some of the Bootstrap styles -->
+    <link href="index.css" rel="stylesheet" type="text/css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Twitter for websites async load -->
+    <script>
+        window.twttr = (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0],
+                t = window.twttr || {};
+            if (d.getElementById(id)) return t;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "https://platform.twitter.com/widgets.js";
+            fjs.parentNode.insertBefore(js, fjs);
+
+            t._e = [];
+            t.ready = function(f) {
+                t._e.push(f);
+            };
+
+            return t;
+        }(document, "script", "twitter-wjs"));
+    </script>
+
+    <!-- chart.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+
+    <!-- jQuery -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7" crossorigin="anonymous"></script> -->
+
+    <!-- Latest compiled and minified JavaScript -->
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> -->
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="page-header">
+                    <h1>Belfast Bikes <small>Calculate your journeys</small></h1></div>
+                <p>Go to your Belfast Bikes account, copy the text in the transactions and paste into the area below.</p>
+                <textarea class="form-control" rows="10" id="bikes-user-input" placeholder="Paste your rental history here, for example:
+
+    Date	Description	Amount
+    2016-02-09 10:20:21	Bike 83411 until 10:25:58 (Royal Avenue / Castlecourt - Europa Bus Station / Blackstaff Square)
+    2016-02-09 11:35:28	Bike 83084 until 11:44:46 (Linenhall Street / Donegall Square South - Carrick Hill/St Patricks Church)
+
+Any non-journey lines (e.g. payment and account information) will be ignored. We do not capture or store your data!
+
+    "></textarea>
+                <div id="message"></div>
+                <button id="submit" class="btn btn-primary btn-large btn-action">Go!</button>
+                <button id="clear" class="btn btn-large btn-action btn-default">Clear</button>
+            </div>
+        </div>
+
+        <div class="row hidden" id="output">
+            <div class="col-xs-12 col-sm-4">
+                <div class="panel panel-default">
+                    <div id="journeys-number" class="panel-body"></div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-4">
+                <div class="panel panel-default">
+                    <div id="total-distance" class="panel-body"></div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-4">
+                <div class="panel panel-default">
+                    <div id="total-time" class="panel-body"></div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-4">
+                <div class="panel panel-default">
+                    <div id="total-calories-co2" class="panel-body"></div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-8">
+                <div class="panel panel-default">
+                    <div id="popular-stations" class="panel-body"></div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h2>Weekday chart</h2>
+                        <canvas id="weekChart" height="120px"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-lg-12">
+                <div class="alert alert-info">
+                    Your distance, calories and CO2 saving is based on the duration of your journeys. An assumption is that you cycle at an average of 10km/h (which is <a href="https://www.technologyreview.com/s/421862/cyclists-pedal-faster-on-wednesdays-reveals-smart-bike-data/"
+                        target="_blank">typical for urban cycling <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></a>). The CO2 saving and calories burned calculations are based on the <a href="https://www.cyclestreets.net/journey/help/faq/#co2"
+                        target="_blank">method used by Cyclestreets <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></a>. This makes some presumptions about what car you might otherwise have driven, your physique, and how fast you cycle.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="web.js"></script>
+
+</body>
