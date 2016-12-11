@@ -6,7 +6,7 @@ var totals = {};
 var daysCounter = {};
 var weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 var tweetSpanA = '<a class="twitter-share-button pull-right" data-size="small" href="https://twitter.com/intent/tweet?text=';
-var tweetSpanB = '&hashtags=belfastbikes&via=bobdata&url=http://www.thiswebsite.theinternet">Tweet</a>';
+var tweetSpanB = '&hashtags=belfastbikes&via=bobdata&url=https://bobharper1.github.io/belfast-bikes-calculator/">Tweet</a>';
 
 (function() {
     document.getElementById('submit').addEventListener('click', input);
@@ -52,7 +52,7 @@ function output() {
             i++;
         }
         document.getElementById('popular-stations').innerHTML += '</ul>';
-        document.getElementById('message').innerHTML = '<div class="alert alert-info" role="alert">Journeys found! Between ' + new Date(journeys[0].date).toDateString() + ' and ' + new Date(journeys[journeys.length - 1].date).toDateString() + '</div>';
+        document.getElementById('message').innerHTML = '<div class="alert alert-info" role="alert">Journeys found! Between ' + new Date(journeys[0].date).toDateString() + ' and ' + new Date(journeys[journeys.length - 1].date).toDateString() + ' <button type="button" class="btn btn-info btn-sm pull-right" aria-label=Download CSV id="download" href="#" onclick="downloadCSV(journeys); return false"><span class="glyphicon glyphicon-floppy-save" aria-hidden="true"></span> Download</button></div>';
         drawWeekChart();
         document.getElementById('output').className = document.getElementById('output').className.replace(/\bhidden\b/, 'show');
     } else {
@@ -133,6 +133,54 @@ function emojiit(emoji, times) {
     return result
 }
 
+function convertArrayOfObjectsToCSV(args) {
+    var result, ctr, keys, columnDelimiter, lineDelimiter, data;
+
+    data = args.data || null;
+    if (data == null || !data.length) {
+        return null;
+    }
+
+    columnDelimiter = args.columnDelimiter || ',';
+    lineDelimiter = args.lineDelimiter || '\n';
+
+    keys = Object.keys(data[0]);
+
+    result = '';
+    result += keys.join(columnDelimiter);
+    result += lineDelimiter;
+
+    data.forEach(function(item) {
+        ctr = 0;
+        keys.forEach(function(key) {
+            if (ctr > 0) result += columnDelimiter;
+
+            result += item[key];
+            ctr++;
+        });
+        result += lineDelimiter;
+    });
+
+    return result;
+}
+
+function downloadCSV(objectArray) {
+    var csv = convertArrayOfObjectsToCSV({
+        data: objectArray
+    });
+
+    if (navigator.msSaveBlob) { // IE users
+        var dataset = new Blob([csv], {
+            type: "text/csv;charset=utf-8;"
+        });
+        navigator.msSaveBlob(dataset, "journeys.csv")
+    } else { // tested Chrome and Firefox
+        csv = 'data:text/csv;charset=utf-8,' + csv;
+        csv = encodeURI(csv);
+        window.open(csv);
+    }
+}
+
 function nodesCount(data) {
     for (var i in data) {
         var node = {};
@@ -198,6 +246,7 @@ function secondsToHrs(d) {
 }
 
 function dataToObject(data) { // return journey lines to the journeys object
+    data = data.toString().replace(/(\d{2}:\d{2}:\d{2})\n/g, '$1'); // to fix bug in IE where copy & paste created unwanted newlines
     var array = data.toString().split("\n");
     var count = 0;
     for (var i in array) {
@@ -225,8 +274,13 @@ function dataToObject(data) { // return journey lines to the journeys object
             journey.calories = Math.round(journey.duration * 0.07); // see https://www.cyclestreets.net/journey/help/faq/#calories based on journey duration rather than distance of the route
             journey.distance_km = Math.round(journey.duration / 3600 * 10 * 100) / 100 // this is based on a presumed 10km/h speed, average for urban cycling
             journey.co2saved_kg = Math.round(journey.distance_km * 0.18641182099 * 100) / 100 // based on distance, which in turn was based on your journey duration. If 100miles saves 30kg C02, then 1km saves 0.18641182099kg
-            journeys[count] = journey;
-            count++
+            if (journey.origin === journey.destination && journey.duration < 120) { // if it's a short 'journey' under 2 mins to/from same station it's not a real journey, so gets ignored
+                console.log(journey.origin, "to", journey.destination, journey.duration, "seconds removed");
+                continue
+            } else {
+                journeys[count] = journey;
+                count++
+            }
         }
     }
 }

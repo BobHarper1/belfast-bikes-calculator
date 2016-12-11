@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="theme-color" content="#476bd6">
+    <title>Belfast Bikes Calculator</title>
+    <meta name="Description" content="Visualise your Belfast Bikes journey data automatically">
+    <meta name="Author" content="Bob Harper">
+    <link rel="Publisher" href="http://github.com/BobHarper1">
+    <meta name="keywords" content="cycling, belfast, bikes, rental, scheme, city, health, , data, statistics, northern ireland" />
+    <meta name="google" content="nositelinkssearchbox" />
+    <meta name="revisit-after" content="2 month">
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@bobdata" />
+    <meta name="twitter:title" content="Belfast Bikes Journey Calculator" />
+    <meta name="twitter:description" content="Visualise your Belfast Bikes journey data automatically" />
+    <meta name="twitter:image" content="http://waitingtimesplus.surge.sh/img/ae.png" />
+    <link rel="me" href="https://twitter.com/bobdata">
+
+    <!-- Latest compiled and minified Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- our own inherit masker for some of the Bootstrap styles -->
+    <link href="src/index.css" rel="stylesheet" type="text/css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="page-header">
+                    <h1>Help <small><a href="/">return to the main page</a></small></h1></div>
+                <h2>How to find your journeys data</h1>
+                    <ol>
+                      <li>Log in to <a href="http://www.belfastbikes.co.uk/en/belfast/" target="_blank">Belfast Bikes</a> and go to your "My account" page.</li>
+                      <li>Highlight and copy (right-click, or Ctrl+C) the journeys text. Don't worry about including the extra text, the calculator isn't picky. Just make sure your select all of your journeys, or if you only want to calculate between certain dates, only select those journeys.</li>
+                      <img src="assets/help1.png">
+                      <li>Paste it into the text area on the <a href="/">main page</a>.</li>
+                      <img src="assets/help2.png">
+                      <li>Looks good? Click Go!</li>
+                    </ol>
+                <h2>About your data</h2>
+                <p>Keep in mind that this is your data, and it remains as your data. The website does not capture or store your journey data (it is all handled by <a href="https://en.wikipedia.org/wiki/Client-side" target="_blank">your web browser</a>)</p>
+                <p>This site uses cookies on your device to monitor and analyse usage. By continuing to use the website your consent to store cookies on your device is assumed. If you want to opt-out of Google Analytics cookies, <a href="https://tools.google.com/dlpage/gaoptout" target="_blank">visit here <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></a>.</p>
+                <h2>Contact</h2>
+                <p>You can find me on <a href="http://twitter.com/bobdata">Twitter</a>.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function(i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function() {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-88802684-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+</body>

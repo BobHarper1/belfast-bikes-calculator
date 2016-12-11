@@ -3,14 +3,26 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <link rel="canonical" href="/">
-    <link rel="me" href="https://twitter.com/odibelfast">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="theme-color" content="#476bd6">
+    <title>Belfast Bikes Calculator</title>
+    <meta name="Description" content="Visualise your Belfast Bikes journey data automatically">
+    <meta name="Author" content="Bob Harper">
+    <link rel="Publisher" href="http://github.com/BobHarper1">
+    <meta name="keywords" content="cycling, belfast, bikes, rental, scheme, city, health, , data, statistics, northern ireland" />
+    <meta name="google" content="nositelinkssearchbox" />
+    <meta name="revisit-after" content="2 month">
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@bobdata" />
+    <meta name="twitter:title" content="Belfast Bikes Journey Calculator" />
+    <meta name="twitter:description" content="Visualise your Belfast Bikes journey data automatically" />
+    <meta name="twitter:image" content="http://waitingtimesplus.surge.sh/img/ae.png" />
+    <link rel="me" href="https://twitter.com/bobdata">
 
     <!-- Latest compiled and minified Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <!-- our own inherit masker for some of the Bootstrap styles -->
-    <link href="index.css" rel="stylesheet" type="text/css">
+    <link href="style/index.css" rel="stylesheet" type="text/css">
 
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
@@ -37,12 +49,6 @@
 
     <!-- chart.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
-
-    <!-- jQuery -->
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7" crossorigin="anonymous"></script> -->
-
-    <!-- Latest compiled and minified JavaScript -->
-    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> -->
 </head>
 
 <body>
@@ -51,7 +57,7 @@
             <div class="col-sm-12">
                 <div class="page-header">
                     <h1>Belfast Bikes <small>Calculate your journeys</small></h1></div>
-                <p>Go to your Belfast Bikes account, copy the text in the transactions and paste into the area below.</p>
+                <p>Go to your <a href="http://www.belfastbikes.co.uk/en/belfast/" target="_blank">Belfast Bikes</a> account, copy the text in the transactions and paste into the area below. <a href="help.html">Help</a></p>
                 <textarea class="form-control" rows="10" id="bikes-user-input" placeholder="Paste your rental history here, for example:
 
     Date	Description	Amount
@@ -96,21 +102,43 @@ Any non-journey lines (e.g. payment and account information) will be ignored. We
             <div class="col-xs-12 col-lg-12">
                 <div class="panel panel-default">
                     <div class="panel-body">
-                        <h2>Weekday chart</h2>
+                        <h3>Weekday chart</h3>
                         <canvas id="weekChart" height="120px"></canvas>
                     </div>
                 </div>
             </div>
             <div class="col-xs-12 col-lg-12">
-                <div class="alert alert-info">
-                    Your distance, calories and CO2 saving is based on the duration of your journeys. An assumption is that you cycle at an average of 10km/h (which is <a href="https://www.technologyreview.com/s/421862/cyclists-pedal-faster-on-wednesdays-reveals-smart-bike-data/"
-                        target="_blank">typical for urban cycling <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></a>). The CO2 saving and calories burned calculations are based on the <a href="https://www.cyclestreets.net/journey/help/faq/#co2"
-                        target="_blank">method used by Cyclestreets <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></a>. This makes some presumptions about what car you might otherwise have driven, your physique, and how fast you cycle.
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">About the calculations</h3>
+                    </div>
+                    <div class="panel-body">
+                        Your distance, calories and CO2 saving estimations are based on the duration of your journeys, rather than knowing what distance you travelled.</br>An assumption is that you cycle at an average of 10km/h (which is <a href="https://www.technologyreview.com/s/421862/cyclists-pedal-faster-on-wednesdays-reveals-smart-bike-data/"
+                            target="_blank">typical for urban bike rental scheme use <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></a>).</br>The CO2 saving and calories burned calculations are based on the <a href="https://www.cyclestreets.net/journey/help/faq/#co2"
+                            target="_blank">method used by Cyclestreets <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></a>. This makes some presumptions about what car you might otherwise have driven, your physique, and how fast you
+                        cycle.</br>Recorded journeys of under 2 mins that are to the same station aren't included in the final calculations, as they are likely to be instances of where bikes have been taken out but not ridden.
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <script src="web.js"></script>
+    <script src="src/web.js"></script>
+    <script>
+        (function(i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function() {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-88802684-1', 'auto');
+        ga('send', 'pageview');
+    </script>
 
 </body>
