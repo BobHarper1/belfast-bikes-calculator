@@ -116,7 +116,7 @@ function drawWeekChart() {
 }
 
 function noDataAlert() {
-    document.getElementById('message').innerHTML = '<div class="alert alert-danger" role="alert"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span><span class="sr-only">Error:</span> Could not find any valid journeys. Please check you input and try again.</div>';
+    document.getElementById('message').innerHTML = '<div class="alert alert-danger" role="alert"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span><span class="sr-only">Error:</span> Could not find any valid journeys. Please check you input and try again. <a href="help.html">Help</a></div>';
 }
 
 function twttWidgetScan() {
