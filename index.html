@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="theme-color" content="#476bd6">
     <title>Belfast Bikes Calculator</title>
-    <meta name="Description" content="Visualise your Belfast Bikes journey data automatically">
+    <meta name="Description" content="Visualise your Belfast Bikes journey data">
     <meta name="Author" content="Bob Harper">
     <link rel="Publisher" href="http://github.com/BobHarper1">
     <meta name="keywords" content="cycling, belfast, bikes, rental, scheme, city, health, , data, statistics, northern ireland" />
@@ -73,7 +73,7 @@ Any non-journey lines (e.g. payment and account information) will be ignored. We
             </div>
         </div>
 
-        <div class="row hidden" id="output">
+        <div class="row hidethis" id="output">
             <div class="col-xs-12 col-sm-4">
                 <div class="panel panel-default">
                     <div id="journeys-number" class="panel-body"></div>
@@ -102,7 +102,7 @@ Any non-journey lines (e.g. payment and account information) will be ignored. We
             <div class="col-xs-12 col-lg-12">
                 <div class="panel panel-default">
                     <div class="panel-body">
-                        <h3>Weekday chart</h3>
+                        <h3>Total number of trips and distance</h3>
                         <canvas id="weekChart" height="120px"></canvas>
                     </div>
                 </div>
@@ -113,10 +113,10 @@ Any non-journey lines (e.g. payment and account information) will be ignored. We
                         <h3 class="panel-title">About the calculations</h3>
                     </div>
                     <div class="panel-body">
-                        Your distance, calories and CO2 saving estimations are based on the duration of your journeys, rather than knowing what distance you travelled.</br>An assumption is that you cycle at an average of 10km/h (which is <a href="https://www.technologyreview.com/s/421862/cyclists-pedal-faster-on-wednesdays-reveals-smart-bike-data/"
-                            target="_blank">typical for urban bike rental scheme use <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></a>).</br>The CO2 saving and calories burned calculations are based on the <a href="https://www.cyclestreets.net/journey/help/faq/#co2"
+                        Your distance, calories and CO2 saving estimations are based on the duration of your journeys, rather than knowing what distance you travelled.<br/>An assumption is that you cycle at an average of 10km/h (which is <a href="https://www.technologyreview.com/s/421862/cyclists-pedal-faster-on-wednesdays-reveals-smart-bike-data/"
+                            target="_blank">typical for urban bike rental scheme use <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></a>).<br/>The CO2 saving and calories burned calculations are based on the <a href="https://www.cyclestreets.net/journey/help/faq/#co2"
                             target="_blank">method used by Cyclestreets <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></a>. This makes some presumptions about what car you might otherwise have driven, your physique, and how fast you
-                        cycle.</br>Recorded journeys of under 2 mins that are to the same station aren't included in the final calculations, as they are likely to be instances of where bikes have been taken out but not ridden.
+                        cycle.<br/>Recorded journeys of under 2 mins that are to the same station aren't included in the final calculations, as they are likely to be instances of where bikes have been taken out but not ridden.
                     </div>
                 </div>
             </div>

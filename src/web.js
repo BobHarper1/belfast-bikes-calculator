@@ -4,11 +4,17 @@ var visits = [];
 var nodes = [];
 var totals = {};
 var daysCounter = {};
+var daysCounterDistance = {};
 var weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 var tweetSpanA = '<a class="twitter-share-button pull-right" data-size="small" href="https://twitter.com/intent/tweet?text=';
 var tweetSpanB = '&hashtags=belfastbikes&via=bobdata&url=https://bobharper1.github.io/belfast-bikes-calculator/">Tweet</a>';
 
+// charts.js global settings
+Chart.defaults.global.animation.duration = 3000;
+Chart.defaults.global.animation.easing = 'easeInOutQuint';
+
 (function() {
+    window.scrollTo(0, 0);
     document.getElementById('submit').addEventListener('click', input);
     document.getElementById('clear').addEventListener('click', clearInputOutput);
 })();
@@ -31,6 +37,7 @@ function input() {
         })
     }
     daysCount(journeys);
+    daysCountDistance(journeys);
     console.log(visits);
     console.log(daysCounter);
     console.log(totals);
@@ -41,10 +48,10 @@ function input() {
 
 function output() {
     if (journeys.length > 0) {
-        document.getElementById('journeys-number').innerHTML = '<h1>' + totals.journeys + '<small> JOURNEYS</br></small></h1>' + "🏆".repeat(totals.journeys / 20) + tweetSpanA + "I've completed " + totals.journeys + " journeys on @BelfastBikes " + "🏆".repeat(totals.journeys / 20) + " Find out yours: " + tweetSpanB;
-        document.getElementById('total-time').innerHTML = '<h2>' + totals.duration + '</br><small>spent pedalling</small></h2>' + tweetSpanA + "I've pedalled for " + secondsToHrs(sumUp(journeys, 'duration')) + " on @BelfastBikes " + "🏅".repeat(totals.journeys / 20) + tweetSpanB;
+        document.getElementById('journeys-number').innerHTML = '<h1>' + totals.journeys + '<small> JOURNEYS</br></small></h1>' + emojiit("🏆", (totals.journeys / 20)) + tweetSpanA + "I've completed " + totals.journeys + " journeys on @BelfastBikes " + emojiit("🏆", (totals.journeys / 20)) + " Find out yours: " + tweetSpanB;
+        document.getElementById('total-time').innerHTML = '<h2>' + totals.duration + '</br><small>spent pedalling</small></h2>' + tweetSpanA + "I've pedalled for " + secondsToHrs(sumUp(journeys, 'duration')) + " on @BelfastBikes " + emojiit("🏅", (totals.journeys / 20)) + tweetSpanB;
         document.getElementById('total-calories-co2').innerHTML = '<h3>' + totals.calories + ' kcal <small>burned 🔥</small></h3><h3>' + totals.co2saved + 'kg <small>CO<sub>2</sub> saved 🌍</small></h3>' + tweetSpanA + "Using @BelfastBikes, I've burned " + totals.calories + "kcal, saving " + totals.co2saved + "kg C02" + tweetSpanB;
-        document.getElementById('total-distance').innerHTML = '<h3>' + totals.distance_miles + ' miles</br><small>' + totals.distance_km + 'km in total</small></h3>' + "🚲".repeat(totals.distance_km / 50) + tweetSpanA + "I've covered " + totals.distance_miles + " miles using @BelfastBikes " + "🚲".repeat(totals.journeys / 20) + " Calculated on " + tweetSpanB;
+        document.getElementById('total-distance').innerHTML = '<h3>' + totals.distance_miles + ' miles</br><small>' + totals.distance_km + 'km in total</small></h3>' + emojiit("🚲", (totals.distance_km / 50)) + tweetSpanA + "I've covered " + totals.distance_miles + " miles using @BelfastBikes " + emojiit("🚲", (totals.journeys / 20)) + " Calculated on " + tweetSpanB;
         document.getElementById('popular-stations').innerHTML = '<h3>Popular stations</h3><ul>';
         var i = 0;
         while (i < 5) {
@@ -54,15 +61,19 @@ function output() {
         document.getElementById('popular-stations').innerHTML += '</ul>';
         document.getElementById('message').innerHTML = '<div class="alert alert-info" role="alert">Journeys found! Between ' + new Date(journeys[0].date).toDateString() + ' and ' + new Date(journeys[journeys.length - 1].date).toDateString() + ' <button type="button" class="btn btn-info btn-sm pull-right" aria-label=Download CSV id="download" href="#" onclick="downloadCSV(journeys); return false"><span class="glyphicon glyphicon-floppy-save" aria-hidden="true"></span> Download</button></div>';
         drawWeekChart();
-        document.getElementById('output').className = document.getElementById('output').className.replace(/\bhidden\b/, 'show');
+        document.getElementById('output').className = document.getElementById('output').className.replace(/\bhidethis\b/, 'showthis');
+        document.getElementById('message').scrollIntoView({
+            behaviour: "smooth"
+        });
     } else {
         noDataAlert();
     }
 }
 
 function clearInputOutput() {
+    window.scrollTo(0, 0);
     document.getElementById('bikes-user-input').value = "";
-    document.getElementById('output').className = document.getElementById('output').className.replace(/\bshow\b/, 'hidden');
+    document.getElementById('output').className = document.getElementById('output').className.replace(/\bshowthis\b/, 'hidethis');
     document.getElementById('message').innerHTML = '';
     journeys = [];
     stationCounter = {};
@@ -77,8 +88,12 @@ function drawWeekChart() {
         data: {
             labels: weekdays,
             datasets: [{
+                type: 'bar',
                 label: 'Number of trips',
-                data: weekdays.map(k => daysCounter[k]),
+                data: weekdays.map(function(k) {
+                    return daysCounter[k]
+                }),
+                yAxisID: 'left',
                 backgroundColor: [
                     'rgba(75, 192, 192, 0.2)',
                     'rgba(255, 0, 200, 0.2)',
@@ -98,6 +113,16 @@ function drawWeekChart() {
                     'rgba(255, 99, 132, 1)'
                 ],
                 borderWidth: 1
+            }, {
+                type: 'line',
+                label: 'Distance (km)',
+                data: weekdays.map(function(k) {
+                    return daysCounterDistance[k]
+                }),
+                yAxisID: 'right',
+                borderColor: 'rgba(255, 99, 132, 1)',
+                fill: false,
+                interpolate: true
             }]
         },
         options: {
@@ -106,6 +131,25 @@ function drawWeekChart() {
             },
             scales: {
                 yAxes: [{
+                    id: 'left',
+                    position: 'left',
+                    scaleLabel: {
+                      display: true,
+                      labelString: 'Bars: Trips'
+                    },
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }, {
+                    id: 'right',
+                    gridLines: {
+                      display: false
+                    },
+                    position: 'right',
+                    scaleLabel: {
+                      display: true,
+                      labelString: 'Line: Distance (km)'
+                    },
                     ticks: {
                         beginAtZero: true
                     }
@@ -125,12 +169,19 @@ function twttWidgetScan() {
     );
 }
 
-function emojiit(emoji, times) {
-    var result = "";
-    for (i in times) {
-        result += emoji;
+function isIE() {
+    if (navigator.userAgent.indexOf('MSIE') !== -1 ||
+        navigator.appVersion.indexOf('Trident/') > 0) {
+        return true
     }
-    return result
+}
+
+function emojiit(emoji, times) {
+    if (isIE() !== true) {
+        return emoji.repeat(3)
+    } else {
+        return emoji
+    }
 }
 
 function convertArrayOfObjectsToCSV(args) {
@@ -217,6 +268,17 @@ function daysCount(data) {
             daysCounter[day] += 1
         } else {
             daysCounter[day] = 1
+        }
+    }
+}
+
+function daysCountDistance(data) {
+    for (var i in data) {
+        var day = weekdays[new Date(data[i].date).getDay()];
+        if (day in daysCounterDistance) {
+            daysCounterDistance[day] += data[i].distance_km
+        } else {
+            daysCounterDistance[day] = 0
         }
     }
 }
