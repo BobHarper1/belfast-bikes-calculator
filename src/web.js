@@ -48,10 +48,10 @@ function input() {
 
 function output() {
     if (journeys.length > 0) {
-        document.getElementById('journeys-number').innerHTML = '<h1>' + totals.journeys + '<small> JOURNEYS</br></small></h1>' + emojiit("🏆", (totals.journeys / 20)) + tweetSpanA + "I've completed " + totals.journeys + " journeys on @BelfastBikes " + emojiit("🏆", (totals.journeys / 20)) + " Find out yours: " + tweetSpanB;
-        document.getElementById('total-time').innerHTML = '<h2>' + totals.duration + '</br><small>spent pedalling</small></h2>' + tweetSpanA + "I've pedalled for " + secondsToHrs(sumUp(journeys, 'duration')) + " on @BelfastBikes " + emojiit("🏅", (totals.journeys / 20)) + tweetSpanB;
-        document.getElementById('total-calories-co2').innerHTML = '<h3>' + totals.calories + ' kcal <small>burned 🔥</small></h3><h3>' + totals.co2saved + 'kg <small>CO<sub>2</sub> saved 🌍</small></h3>' + tweetSpanA + "Using @BelfastBikes, I've burned " + totals.calories + "kcal, saving " + totals.co2saved + "kg C02" + tweetSpanB;
-        document.getElementById('total-distance').innerHTML = '<h3>' + totals.distance_miles + ' miles</br><small>' + totals.distance_km + 'km in total</small></h3>' + emojiit("🚲", (totals.distance_km / 50)) + tweetSpanA + "I've covered " + totals.distance_miles + " miles using @BelfastBikes " + emojiit("🚲", (totals.journeys / 20)) + " Calculated on " + tweetSpanB;
+        document.getElementById('journeys-number').innerHTML = '<h1>' + totals.journeys + '<small> JOURNEYS</br></small></h1>' + emojiit("🏆", (totals.journeys / 20)) + tweetSpanA + "I've completed " + totals.journeys + " journeys on @BelfastBikes @nextbikeuk" + emojiit("🏆", (totals.journeys / 20)) + " Find out yours: " + tweetSpanB;
+        document.getElementById('total-time').innerHTML = '<h2>' + totals.duration + '</br><small>spent pedalling</small></h2>' + tweetSpanA + "I've pedalled for " + secondsToHrs(sumUp(journeys, 'duration')) + " on @BelfastBikes @nextbikeuk" + emojiit("🏅", (totals.journeys / 20)) + tweetSpanB;
+        document.getElementById('total-calories-co2').innerHTML = '<h3>' + totals.calories + ' kcal <small>burned 🔥</small></h3><h3>' + totals.co2saved + 'kg <small>CO<sub>2</sub> saved 🌍</small></h3>' + tweetSpanA + "Using @BelfastBikes @nextbikeuk, I've burned " + totals.calories + "kcal, saving " + totals.co2saved + "kg C02" + tweetSpanB;
+        document.getElementById('total-distance').innerHTML = '<h3>' + totals.distance_miles + ' miles</br><small>' + totals.distance_km + 'km in total</small></h3>' + emojiit("🚲", (totals.distance_km / 50)) + tweetSpanA + "I've covered " + totals.distance_miles + " miles using @BelfastBikes @nextbikeuk " + emojiit("🚲", (totals.journeys / 20)) + " Calculated on " + tweetSpanB;
         document.getElementById('popular-stations').innerHTML = '<h3>Popular stations</h3><ul>';
         var i = 0;
         while (i < 5) {
@@ -322,8 +322,8 @@ function dataToObject(data) { // return journey lines to the journeys object
             var detail = (/\(+([^.]+)\)+/).exec(line)[1]; // regex to search for the journey: between the first and last parentheses
             if (detail.indexOf(' - ') !== -1) { // tests if journey has an origin *and* a destination
                 var bits = detail.split(/(\s-\s)/);
-                journey.origin = bits[0];
-                journey.destination = bits[2];
+                journey.origin = bits[0].replace(/\s.?$/g,""); // remove trailing whitespace that will cause problems
+                journey.destination = bits[2].replace(/\s.?$/g,"");
             } else { // else if a journey has *only* an origin (meaning same origin - destination)
                 journey.origin = detail;
                 journey.destination = detail;

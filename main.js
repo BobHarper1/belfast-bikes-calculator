@@ -112,8 +112,8 @@ function dataToObject(data) { // return journey lines to the journeys object
             var detail = (/\(+([^.]+)\)+/).exec(line)[1]; // regex to search for the journey: between the first and last parentheses
             if (detail.indexOf(' - ') !== -1) { // tests if journey has an origin *and* a destination
                 var bits = detail.split(/(\s-\s)/);
-                journey.origin = bits[0];
-                journey.destination = bits[2];
+                journey.origin = bits[0].replace(/\s.?$/g,""); // remove trailing whitespace that will cause problems
+                journey.destination = bits[2].replace(/\s.?$/g,"");
             } else { // else if a journey has *only* an origin (meaning same origin as destination)
                 journey.origin = detail;
                 journey.destination = detail;
