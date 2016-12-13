@@ -178,7 +178,7 @@ function isIE() {
 
 function emojiit(emoji, times) {
     if (isIE() !== true) {
-        return emoji.repeat(3)
+        return emoji.repeat(Math.min(times,5))  // We want to limit the number of emojis that we use. Math.min() returns the smallest of 2 numbers: the caculated value or 5.
     } else {
         return emoji
     }
